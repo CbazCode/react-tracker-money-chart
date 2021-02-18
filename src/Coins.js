@@ -1,7 +1,7 @@
 
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import './App.css';
+import './Coins.css';
 import { Coin } from './Coin';
 
 function Coins() {
@@ -26,7 +26,6 @@ function Coins() {
   }
 
   const filteredCoins = coins.filter(coin =>{
-
     return coin.name.toLowerCase().includes(search.toLowerCase())
   }
   );
@@ -39,22 +38,39 @@ function Coins() {
           <input type="text" placeholder = "Search" className = "coin-input" onChange = {handleChange}/>
         </form>
       </div>
-      {filteredCoins.map(coin => {
-        return (
-          <Coin
-            key={coin.id}
-            name={coin.name}
-            price={coin.current_price}
-            symbol={coin.symbol}
-            marketcap={coin.total_volume}
-            volume={coin.market_cap}
-            image={coin.image}
-            priceChange24h={coin.price_change_percentage_24h}
-            priceChange1h = {coin.price_change_percentage_1h_in_currency}
 
-          />
-        );
-      })}
+      <div className="coin-label-container">
+        <div className="coin-row">
+          <p className = "coin-label-name">Name</p>
+          <p className = "coin-label-symbol">Symbol</p>
+          <p className = "coin-label-price">Price</p>
+          <p className = "coin-label-volume">Volume</p>
+          <p className = "coin-label-1h">1h</p>
+          <p className = "coin-label-24h">24h</p>
+          <p className = "coin-label-marketcap">Mkt cap</p>
+         
+        </div>
+      </div>
+
+      { (filteredCoins.length > 0) ?
+        (filteredCoins.map(coin => {
+          return (
+            <Coin
+              key={coin.id}
+              name={coin.name}
+              price={coin.current_price}
+              symbol={coin.symbol}
+              marketcap={coin.total_volume}
+              volume={coin.market_cap}
+              image={coin.image}
+              priceChange24h={coin.price_change_percentage_24h}
+              priceChange1h = {coin.price_change_percentage_1h_in_currency}
+
+            />
+          );
+        })) :
+        (<p className = "not-found">Not found</p>)
+      }
     </div>
   );
 }
