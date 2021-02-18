@@ -40,7 +40,7 @@ function Coins() {
       </div>
 
       <div className="coin-label-container">
-        <div className="coin-row">
+        <div className="coin-row-label">
           <p className = "coin-label-name">Name</p>
           <p className = "coin-label-symbol">Symbol</p>
           <p className = "coin-label-price">Price</p>

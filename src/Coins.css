@@ -24,7 +24,7 @@
   justify-content: center;
   align-content: center;
 }
-.coin-row {
+.coin-row-label {
   display: flex;
   flex-direction: row;
   justify-content: start;
@@ -33,6 +33,7 @@
   border-bottom: 1px solid #d7d7d7;
   width: 1000px;
 }
+
 
 .coin-label-name,
 .coin-label-symbol{

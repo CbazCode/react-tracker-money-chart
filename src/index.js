@@ -2,10 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import Coins from './Coins';
-
+import AppRouter from './routers/AppRouter'
 
 ReactDOM.render(
-    <Coins />,
+    <AppRouter />,
   document.getElementById('root')
 );
 
