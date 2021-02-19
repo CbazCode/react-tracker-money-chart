@@ -1,10 +1,8 @@
 
-import axios from 'axios';
-import { useContext, useEffect, useState } from 'react';
-import './Coins.css';
+import { useContext,  useState } from 'react';
+import '../styles/Coins.css';
 import { Coin } from './Coin';
-import { useAxios } from './hooks/useAxios';
-import { CoinContext } from './context/CoinContext';
+import { CoinContext } from '../context/CoinContext';
 
 function Coins() {
   // const [coins, setCoins] = useState([]);

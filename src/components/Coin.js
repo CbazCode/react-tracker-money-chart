@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link, Route } from 'react-router-dom';
-import './Coin.css';
+import { Link} from 'react-router-dom';
+import '../styles/Coin.css';
 
 export const Coin = ({ id, name, image, symbol, price, volume, priceChange1h,  priceChange24h, marketcap}) => {
     

@@ -3,10 +3,9 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
 } from "react-router-dom";
-import { ChartCoin } from "../ChartCoin";
-import Coins from "../Coins";
+import { ChartCoin } from "../components/ChartCoin";
+import Coins from "../components/Coins";
 
 export default function AppRouter() {
   return (
