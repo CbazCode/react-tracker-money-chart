@@ -1,0 +1,17 @@
+.chart-container{
+    position: relative; 
+    height:90vh; 
+    width:100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+.chart{
+    display: flex;
+    align-items: center;
+    height:100vh; 
+  
+}
