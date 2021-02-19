@@ -1,31 +1,24 @@
 
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import './Coins.css';
 import { Coin } from './Coin';
+import { useAxios } from './hooks/useAxios';
+import { CoinContext } from './context/CoinContext';
 
 function Coins() {
-  const [coins, setCoins] = useState([]);
+  // const [coins, setCoins] = useState([]);
   const [search, setSearch] = useState('');
 
-  useEffect(() => {
-    
-    axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=true&price_change_percentage=1h')
-      .then( res => {
-        setCoins(res.data);
-        console.log(res.data)
-      })
-      .catch(error => {
-        return console.error(error);
-      })
-  },[])
+  // const {loading , data:coins} = useAxios('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=true&price_change_percentage=1h');
+  const {loading , coins} = useContext(CoinContext);
 
   const handleChange = (e) => {
     e.preventDefault();
     setSearch(e.target.value);
   }
 
-  const filteredCoins = coins.filter(coin =>{
+  const filteredCoins = coins?.filter(coin =>{
     return coin.name.toLowerCase().includes(search.toLowerCase())
   }
   );
@@ -52,25 +45,32 @@ function Coins() {
         </div>
       </div>
 
-      { (filteredCoins.length > 0) ?
-        (filteredCoins.map(coin => {
-          return (
-            <Coin
-              key={coin.id}
-              name={coin.name}
-              price={coin.current_price}
-              symbol={coin.symbol}
-              marketcap={coin.total_volume}
-              volume={coin.market_cap}
-              image={coin.image}
-              priceChange24h={coin.price_change_percentage_24h}
-              priceChange1h = {coin.price_change_percentage_1h_in_currency}
+      { (!loading) ?
+          (filteredCoins.length > 0) ?
+            (filteredCoins.map(coin => {
+              return (
+                <Coin
+                  key={coin.id}
+                  id = {coin.id}
+                  name={coin.name}
+                  price={coin.current_price}
+                  symbol={coin.symbol}
+                  marketcap={coin.total_volume}
+                  volume={coin.market_cap}
+                  image={coin.image}
+                  priceChange24h={coin.price_change_percentage_24h}
+                  priceChange1h = {coin.price_change_percentage_1h_in_currency}
+                  
 
-            />
-          );
-        })) :
-        (<p className = "not-found">Not found</p>)
+                />
+              );
+            })) :
+            (<p className = "not-found">Not found</p>)
+          :
+            <p style={{marginTop: '1rem'}}>Loading...</p>
+
       }
+
     </div>
   );
 }

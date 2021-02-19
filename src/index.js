@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { CoinApp } from './CoinApp';
 
-import Coins from './Coins';
-import AppRouter from './routers/AppRouter'
+
 
 ReactDOM.render(
-    <AppRouter />,
+    <CoinApp />,
   document.getElementById('root')
 );
 

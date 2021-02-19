@@ -2,9 +2,10 @@ import React from 'react';
 import { Link, Route } from 'react-router-dom';
 import './Coin.css';
 
-export const Coin = ({ name, image, symbol, price, volume, priceChange1h,  priceChange24h, marketcap }) => {
+export const Coin = ({ id, name, image, symbol, price, volume, priceChange1h,  priceChange24h, marketcap}) => {
+    
     return (
-        <Link className = "coin-container" to = '/chart'>
+        <Link className = "coin-container" to = {`./chart/${id}`} >
             <div className="coin-row">
                 <div className="coin">
                     <img src={image} alt="crypto"/>

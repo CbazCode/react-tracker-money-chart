@@ -13,7 +13,7 @@ export default function AppRouter() {
     <Router>
         <div>
         <Switch>
-          <Route path="/chart" component = {ChartCoin}/>
+          <Route path="/chart/:id" component = {ChartCoin}/>
           <Route path="/" component = {Coins} />
             
         </Switch>
